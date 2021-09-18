@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/imageListFragment"
-        android:name="com.flowz.paybackjobapp.ImageListFragment"
-        android:label="fragment_image_list"
+        android:name="com.flowz.paybackjobapp.ui.list.ImageListFragment"
+        android:label="Image list"
         tools:layout="@layout/fragment_image_list" >
         <action
             android:id="@+id/action_imageListFragment_to_imageDetailFragment"
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/imageDetailFragment"
-        android:name="com.flowz.paybackjobapp.ImageDetailFragment"
-        android:label="fragment_image_detail"
+        android:name="com.flowz.paybackjobapp.ui.detail.ImageDetailFragment"
+        android:label="Image detail"
         tools:layout="@layout/fragment_image_detail" />
 </navigation>

@@ -41,25 +41,28 @@ class ImageListFragment : Fragment(R.layout.fragment_image_list) {
 
         binding.apply {
 
-            text.setOnClickListener {
+            textView1.setOnClickListener {
 
-                viewModel.searchImageTypeFromNetwork("cats")
+                viewModel.searchImageTypeFromNetwork("fruits")
                 viewModel.imagesFromNetworkStaus.observe(viewLifecycleOwner, Observer { state->
 
                     state?.also {
                         when(it){
                             ImagesApiStatus.ERROR-> {
-                                showSnackbar(text, "Error fetching data from Api")
+                                showSnackbar(textView1, "Error fetching data from Api")
                             }
                             ImagesApiStatus.LOADING-> {
-                                showSnackbar(text, "Loading data from Api")
+                                showSnackbar(textView1, "Loading data from Api")
                             }
                             ImagesApiStatus.DONE-> {
-                                showSnackbar(text, "Images fetched from Api")
+                                showSnackbar(textView1, "Images fetched from Api")
                                 viewModel.imagesFromNetwork.observe(viewLifecycleOwner, Observer {
-                                     it.hits.forEach {
-                                    text.text = it.user
-                                    }
+
+                                    textView1.text = it.toString()
+
+//                                    it.hits.forEach {
+//                                         textView1.text = it.user
+//                                    }
                                 })
 
                             }
