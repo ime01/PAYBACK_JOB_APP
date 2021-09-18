@@ -58,7 +58,7 @@ class ImageListFragment : Fragment(R.layout.fragment_image_list) {
                                 showSnackbar(textView1, "Images fetched from Api")
                                 viewModel.imagesFromNetwork.observe(viewLifecycleOwner, Observer {
 
-                                    textView1.text = it.toString()
+                                    textView1.text = it.hits.toString()
 
 //                                    it.hits.forEach {
 //                                         textView1.text = it.user
