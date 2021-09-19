@@ -6,7 +6,7 @@
     <string name="username">Username</string>
     <string name="tags">Tags</string>
     <string name="error">Unable to fetch Images from Api</string>
-    <string name="welcome_text">Displaying a list of Images from Api here https://pixabay.com/api/ </string>
+    <string name="welcome_text">Displaying a list of Images from Api here https://pixabay.com/api/ for my job assesment at Payback, Hope to land it and join this great Team!</string>
     <string name="enter_image_type">Enter the image type you wish to search for</string>
     <string name="get_images">Get Images</string>
     <string name="error_fetching_data">Error fetching data from Api</string>
@@ -16,4 +16,8 @@
     <string name="username1">UserName</string>
     <string name="comments">Comments</string>
     <string name="downloads">Downloads</string>
+    <string name="open_details">Open Details</string>
+    <string name="sure_to_open">Want to see more details?</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
 </resources>

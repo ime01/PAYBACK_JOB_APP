@@ -31,6 +31,7 @@
         style="@style/UserNameStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:hint="@string/enter_image_type"
         app:hintEnabled="true"
         app:layout_constraintEnd_toStartOf="@+id/fetch_images"
@@ -53,6 +54,7 @@
         android:layout_height="wrap_content"
         android:text="@string/get_images"
         android:fontFamily="@font/almendra"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/image_type_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/image_type_layout" />

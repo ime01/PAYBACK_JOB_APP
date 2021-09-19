@@ -1,6 +1,7 @@
 package com.flowz.paybackjobapp.ui.list
 
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
@@ -20,6 +21,7 @@ import com.flowz.paybackjobapp.R
 import com.flowz.paybackjobapp.databinding.FragmentImageListBinding
 import com.flowz.paybackjobapp.models.Hit
 import com.flowz.paybackjobapp.models.ImageResponse
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -81,10 +83,11 @@ class ImageListFragment : Fragment(R.layout.fragment_image_list), ImagesAdapter.
                             errorImage.isVisible = true
                             showSnackbar(welcomeTextMarquee, getString(R.string.error_fetching_data))
                         }
+
                         ImagesApiStatus.LOADING-> {
                             shimmerFrameLayout.startShimmer()
-//                                showSnackbar(welcomeTextMarquee, "Loading data from Api")
                         }
+
                         ImagesApiStatus.DONE-> {
                             showSnackbar(welcomeTextMarquee, getString(R.string.fetched))
                             viewModel.imagesFromNetwork.observe(viewLifecycleOwner, Observer {
@@ -112,7 +115,6 @@ class ImageListFragment : Fragment(R.layout.fragment_image_list), ImagesAdapter.
 
             shimmerFrameLayout.stopShimmer()
             shimmerFrameLayout.visibility = View.GONE
-//            rvList.isVisible = true
         }
 
 
@@ -132,9 +134,19 @@ class ImageListFragment : Fragment(R.layout.fragment_image_list), ImagesAdapter.
     }
 
     override fun onItemClickListener(hit: Hit) {
-        val action = ImageListFragmentDirections.actionImageListFragmentToImageDetailFragment()
-        action.hit = hit
-        Navigation.findNavController(requireView()).navigate(action)
+
+        AlertDialog.Builder(this.requireContext()).setTitle(getString(R.string.open_details))
+            .setMessage(getString(R.string.sure_to_open))
+            .setPositiveButton(getString(R.string.yes)) { _, _ ->
+                val action = ImageListFragmentDirections.actionImageListFragmentToImageDetailFragment()
+                action.hit = hit
+                Navigation.findNavController(requireView()).navigate(action)
+            }
+            .setNegativeButton(getString(R.string.no)){ _, _ -> }
+            .setIcon(android.R.drawable.ic_dialog_alert)
+            .show()
+
+
 
     }
 

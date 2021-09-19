@@ -48,11 +48,15 @@ class ImageDetailFragment : Fragment(R.layout.fragment_image_detail) {
 
         binding.apply {
 
-            numberOfLikes.text = hit?.likes.toString()
-            numberOfComments.text = hit?.comments.toString()
-            numberOfDownloads.text = hit?.downloads.toString()
-            fUserName.text = hit?.user.toString()
-            fImageTags.text = hit?.tags .toString()
+            hit?.apply {
+
+                numberOfLikes.text = this.likes.toString()
+                numberOfComments.text = this.comments.toString()
+                numberOfDownloads.text = this.downloads.toString()
+                fUserName.text = this.user
+                fImageTags.text = this.tags
+            }
+
 
 
             Glide.with(imageDetailLarge)
