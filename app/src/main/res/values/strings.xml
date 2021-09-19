@@ -2,4 +2,18 @@
     <string name="app_name">PAYBACK JOB APP</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="image">image thumbnail</string>
+    <string name="username">Username</string>
+    <string name="tags">Tags</string>
+    <string name="error">Unable to fetch Images from Api</string>
+    <string name="welcome_text">Displaying a list of Images from Api here https://pixabay.com/api/ </string>
+    <string name="enter_image_type">Enter the image type you wish to search for</string>
+    <string name="get_images">Get Images</string>
+    <string name="error_fetching_data">Error fetching data from Api</string>
+    <string name="fetched">Images fetched from Api</string>
+    <string name="enter_valid_input">Ensure you enter image type</string>
+    <string name="full_image">full image</string>
+    <string name="username1">UserName</string>
+    <string name="comments">Comments</string>
+    <string name="downloads">Downloads</string>
 </resources>

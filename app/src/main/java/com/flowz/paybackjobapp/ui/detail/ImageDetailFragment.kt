@@ -5,38 +5,71 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.flowz.paybackjobapp.R
+import com.flowz.paybackjobapp.databinding.FragmentImageDetailBinding
+import com.flowz.paybackjobapp.databinding.FragmentImageListBinding
+import com.flowz.paybackjobapp.models.Hit
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ImageDetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class ImageDetailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+
+class ImageDetailFragment : Fragment(R.layout.fragment_image_detail) {
+
+    private var _binding: FragmentImageDetailBinding? = null
+    private val binding get() = _binding!!
+
+    private var hit: Hit? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
+            hit = ImageDetailFragmentArgs.fromBundle(it).hit
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_image_detail, container, false)
+//    override fun onCreateView(
+//        inflater: LayoutInflater, container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+//        // Inflate the layout for this fragment
+//        return inflater.inflate(R.layout.fragment_image_detail, container, false)
+//    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        _binding = FragmentImageDetailBinding.bind(view)
+
+
+        binding.apply {
+
+            numberOfLikes.text = hit?.likes.toString()
+            numberOfComments.text = hit?.comments.toString()
+            numberOfDownloads.text = hit?.downloads.toString()
+            fUserName.text = hit?.user.toString()
+            fImageTags.text = hit?.tags .toString()
+
+
+            Glide.with(imageDetailLarge)
+                .load(hit?.largeImageURL)
+                .circleCrop()
+                .placeholder(R.drawable.ic_baseline_search_24)
+                .error(R.drawable.ic_baseline_error_24)
+                .fallback(R.drawable.ic_baseline_search_24)
+                .into(imageDetailLarge)
+
+        }
+
+
+
     }
+
+
 
     companion object {
         /**

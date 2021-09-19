@@ -12,11 +12,26 @@
         tools:layout="@layout/fragment_image_list" >
         <action
             android:id="@+id/action_imageListFragment_to_imageDetailFragment"
-            app:destination="@id/imageDetailFragment" />
+            app:destination="@id/imageDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+        <argument
+            android:name="hit"
+            app:argType="com.flowz.paybackjobapp.models.Hit"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
     <fragment
         android:id="@+id/imageDetailFragment"
         android:name="com.flowz.paybackjobapp.ui.detail.ImageDetailFragment"
-        android:label="Image detail"
-        tools:layout="@layout/fragment_image_detail" />
+        android:label="Image details"
+        tools:layout="@layout/fragment_image_detail">
+
+        <argument
+            android:name="hit"
+            app:argType="com.flowz.paybackjobapp.models.Hit"
+            app:nullable="true"
+            android:defaultValue="@null" />
+
+    </fragment>
 </navigation>
