@@ -4,8 +4,6 @@ PAYBACK Gmbh job assesment task
 
 ![Screenshot_20210919-192158_PAYBACK JOB APP](https://user-images.githubusercontent.com/44091450/133938679-1dbaf613-7339-41b0-9534-4631ab91a0ea.jpg)
 
-
-![Screenshot_20210919-192158_PAYBACK JOB APP](https://user-images.githubusercontent.com/44091450/133938640-0826dd1e-99e2-4315-a3c4-b53061ff007b.jpg)
 ![Screenshot_20210919-192211_PAYBACK JOB APP](https://user-images.githubusercontent.com/44091450/133938645-95f323e2-204b-4b33-b0a4-be8613b0c45e.jpg)
 )
 
