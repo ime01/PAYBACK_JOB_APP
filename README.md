@@ -1,11 +1,11 @@
 # PAYBACK_JOB_APP
 APP BUILT FOR MY JOB ASSESSTMENT at PAYBACK Gmbh, app consumes data from the pixabay api utillizing their issued api key
 
-THIS APP IS BUILT WITH THE GUIDELINES GIVEN ON THE ASSESSMENT DOCUMENT UTILIZING THE LATEST BUILD PRACTICES AND TOOLS SUCH AS
+THIS APP IS BUILT WITH THE GUIDELINES GIVEN ON THE ASSESSMENT DOCUMENT UTILIZING THE LATEST BUILD PRACTICES, TOOLS AND LIBRARIES SUCH AS
 
 KOTLIN
 
-DAGGERHILT
+DAGGERHILT used instead of dagger as it is the latest standard Dependency Injection Library from google
 
 ANDROID ARCHITECTURE COMPONENTS
 
@@ -13,13 +13,13 @@ ANDROID JETPACK NAVIGATION
 
 CLEAN ARCHITECTURE WITH MVVM PATTERN AND SINGLE ACTIVITY
 
-VIEWBINDING
+VIEWBINDING used in place of Databinding as it is the latest and more optimized version for locating views from google
 
 ROOM DATABASE
 
-RETROFIT
+RETROFIT 2
 
-COROUTINES
+COROUTINES  used in place of RxJava 2 as this is the latest standard library for executing asynchronous tasks from google
 
 FLOW
 
