@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import coil.load
 import com.bumptech.glide.Glide
 import com.flowz.paybackjobapp.R
 import com.flowz.paybackjobapp.databinding.FragmentImageDetailBinding
@@ -58,7 +59,13 @@ class ImageDetailFragment : Fragment(R.layout.fragment_image_detail) {
             }
 
 
-
+//            imageDetailLarge.load(hit?.largeImageURL) {
+//                error(R.drawable.ic_baseline_error_24)
+//                placeholder(R.drawable.ic_baseline_search_24)
+//                crossfade(true)
+//                crossfade(1000)
+//
+//            }
             Glide.with(imageDetailLarge)
                 .load(hit?.largeImageURL)
                 .circleCrop()
@@ -67,10 +74,8 @@ class ImageDetailFragment : Fragment(R.layout.fragment_image_detail) {
                 .fallback(R.drawable.ic_baseline_search_24)
                 .into(imageDetailLarge)
 
+
         }
-
-
-
     }
 
 

@@ -18,12 +18,13 @@ enum class  ImagesApiStatus {LOADING, ERROR, DONE}
 class ImagesViewModel @Inject constructor(private val imagesRepository: ImageRepository) : ViewModel(){
 
     val imagesFromNetwork = MutableLiveData<ImageResponse>()
+    val imagesFromLocalDb = imagesRepository.hitsFromDb
+    val LocalImagesFromDb = imagesRepository.localHitsFromDb
     val imagesFromNetworkStaus = MutableLiveData<ImagesApiStatus>()
 
 
     fun searchImageTypeFromNetwork(imageType: String){
 
-//        EspressoIdlingResource.increment()
 
         viewModelScope.launch(Dispatchers.IO){
             try {
@@ -36,10 +37,10 @@ class ImagesViewModel @Inject constructor(private val imagesRepository: ImageRep
                 withContext(Dispatchers.Main){
                     imagesFromNetworkStaus.value = ImagesApiStatus.DONE
                 }
-//            Sending Drinks from Network into Room Database
-//                val alldrinks = imagesRepository.fetchAllDrinks(drinkType)
-//
-//                imagesRepository.insertListOfDrinksIntoDb(alldrinks.drinks)
+//            Sending Hits from Network into Room Database
+                val allHits = imagesRepository.fetchAllImages(imageType)
+
+                imagesRepository.insertListOfHitsIntoDb(allHits.hits)
 
             }catch (e:Exception){
                 e.printStackTrace()

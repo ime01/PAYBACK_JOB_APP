@@ -3,6 +3,8 @@ package com.flowz.drinkcocktails.di
 import android.content.Context
 import androidx.room.Room
 import com.flowz.agromailjobtask.utils.Constants
+import com.flowz.drinkcocktails.drinkroomdb.HitDatabase
+import com.flowz.drinkcocktails.drinkroomdb.HitsDao
 import com.flowz.paybackjobapp.network.ApiServiceCalls
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
@@ -42,21 +44,21 @@ object AppModule {
         retrofit.create(ApiServiceCalls::class.java)
 
 
-//    @Provides
+    @Provides
+    @Singleton
+    fun providesHitsDatabase(@ApplicationContext app: Context) =
+        Room.databaseBuilder(app, HitDatabase::class.java, "hitsDatabase.db").build()
+
+
+    @Provides
+    @Singleton
+    fun providesHitsDao (db: HitDatabase) = db.hitsDao()
+
 //    @Singleton
-//    fun providesDrinkDatabase(@ApplicationContext app: Context) =
-//        Room.databaseBuilder(app, DrinkDatabase::class.java, "cocktailDrinks.db").build()
-//
-//
 //    @Provides
-//    @Singleton
-//    fun providesDrinksDao (db: DrinkDatabase) = db.drinkDao()
-//
-//    @Singleton
-//    @Provides
-//    fun provideDefaultDrinkRepository(
-//        dao: DrinkDao,
+//    fun provideDefaultHitsRepository(
+//        dao: HitsDao,
 //        api: ApiServiceCalls
-//    ) = DrinksCocktailsRepositoryForTesting( api, dao) as TdrinkRepository
-    
+//    ) = DrinksHitsRepositoryForTesting( api, dao) as TdrinkRepository
+//
 }

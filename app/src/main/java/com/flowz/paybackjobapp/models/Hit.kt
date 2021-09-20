@@ -2,14 +2,18 @@ package com.flowz.paybackjobapp.models
 
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
+@Entity(tableName = "images_table")
 @Parcelize
 data class Hit(
     val collections: Int,
     val comments: Int,
     val downloads: Int,
+    @PrimaryKey(autoGenerate = true)
     val id: Int,
     val imageHeight: Int,
     val imageSize: Int,

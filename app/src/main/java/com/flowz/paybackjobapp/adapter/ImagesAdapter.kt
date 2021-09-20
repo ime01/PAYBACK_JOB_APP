@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.ListAdapter
 import coil.load
+import com.bumptech.glide.Glide
 import com.flowz.paybackjobapp.R
 import com.flowz.paybackjobapp.databinding.ImageListItemBinding
 import com.flowz.paybackjobapp.models.Hit
