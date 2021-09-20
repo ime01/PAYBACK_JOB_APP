@@ -16,8 +16,6 @@ interface HitsDao {
     @Query("SELECT * FROM images_table where id = id")
     fun getHits() : Flow<List<Hit>>
 
-    @Query("SELECT * FROM images_table where id = id")
-    fun getLocalHits() : LiveData<List<Hit>>
 
     @Query("DELETE FROM images_table")
     fun clearAll()

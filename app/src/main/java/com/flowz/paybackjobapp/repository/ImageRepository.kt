@@ -14,7 +14,6 @@ import javax.inject.Singleton
 class ImageRepository @Inject constructor( private val apiClient: ApiServiceCalls, private val dbReference : HitsDao) {
 
     val hitsFromDb = dbReference.getHits()
-    val localHitsFromDb = dbReference.getLocalHits()
 
 
     suspend fun fetchAllImages( searchQuery: String): ImageResponse{

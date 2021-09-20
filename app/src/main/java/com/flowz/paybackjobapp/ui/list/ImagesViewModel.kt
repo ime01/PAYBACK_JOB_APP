@@ -19,7 +19,6 @@ class ImagesViewModel @Inject constructor(private val imagesRepository: ImageRep
 
     val imagesFromNetwork = MutableLiveData<ImageResponse>()
     val imagesFromLocalDb = imagesRepository.hitsFromDb
-    val LocalImagesFromDb = imagesRepository.localHitsFromDb
     val imagesFromNetworkStaus = MutableLiveData<ImagesApiStatus>()
 
 
