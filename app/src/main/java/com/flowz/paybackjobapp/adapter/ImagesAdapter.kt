@@ -10,14 +10,18 @@ import com.flowz.paybackjobapp.R
 import com.flowz.paybackjobapp.databinding.ImageListItemBinding
 import com.flowz.paybackjobapp.models.Hit
 
+typealias urlListener = (item: Hit) -> Unit
 
-class ImagesAdapter  (val listener: RowClickListener)  :ListAdapter<Hit, ImagesAdapter.ImageViewHolder>(ImageDiffCallback()) {
+
+class ImagesAdapter  (val listener: urlListener)  :ListAdapter<Hit, ImagesAdapter.ImageViewHolder>(ImageDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):  ImageViewHolder {
 
         val view = LayoutInflater.from(parent.context).inflate(R.layout.image_list_item, parent, false)
 
-        return ImageViewHolder(ImageListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return ImageViewHolder(ImageListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)) {
+            getItem(it)?.let{item-> listener(item)}
+        }
 
     }
 
@@ -43,12 +47,11 @@ class ImagesAdapter  (val listener: RowClickListener)  :ListAdapter<Hit, ImagesA
         }
     }
 
-    inner class ImageViewHolder(val binding: ImageListItemBinding): RecyclerView.ViewHolder(binding.root){
+    inner class ImageViewHolder(val binding: ImageListItemBinding, private val listener: (Int)-> Unit): RecyclerView.ViewHolder(binding.root){
 
         init {
             binding.root.setOnClickListener {
-                val item = getItem(adapterPosition)
-                listener.onItemClickListener(item)
+                listener(adapterPosition)
             }
         }
     }

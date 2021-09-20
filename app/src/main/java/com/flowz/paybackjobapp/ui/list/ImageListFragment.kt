@@ -30,7 +30,7 @@ import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class ImageListFragment : Fragment(R.layout.fragment_image_list), ImagesAdapter.RowClickListener {
+class ImageListFragment : Fragment(R.layout.fragment_image_list) {
 
     private var _binding: FragmentImageListBinding? = null
     private val binding get() = _binding!!
@@ -49,7 +49,10 @@ class ImageListFragment : Fragment(R.layout.fragment_image_list), ImagesAdapter.
         _binding = FragmentImageListBinding.bind(view)
 
         showWelcomeMarqueeText()
-        imagesAdapter = ImagesAdapter(this@ImageListFragment)
+
+        imagesAdapter = ImagesAdapter{
+            transitionToDetailView(it)
+        }
         observeState()
 
         if (getConnectionType(requireContext())){
@@ -167,8 +170,8 @@ class ImageListFragment : Fragment(R.layout.fragment_image_list), ImagesAdapter.
 
     }
 
-    override fun onItemClickListener(hit: Hit) {
 
+    fun transitionToDetailView(hit: Hit){
         AlertDialog.Builder(this.requireContext()).setTitle(getString(R.string.open_details))
             .setMessage(getString(R.string.sure_to_open))
             .setPositiveButton(getString(R.string.yes)) { _, _ ->
@@ -179,8 +182,6 @@ class ImageListFragment : Fragment(R.layout.fragment_image_list), ImagesAdapter.
             .setNegativeButton(getString(R.string.no)){ _, _ -> }
             .setIcon(android.R.drawable.ic_dialog_alert)
             .show()
-
-
 
     }
 
